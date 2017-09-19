@@ -1,0 +1,40 @@
+---
+title: "t-test and bootstrap"
+author: "Dr K"
+date: "September 19, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+require(tidyverse)
+```
+
+## get attitude data
+
+
+```{r }
+tude <- attitude
+
+```
+## Take a look
+
+```{r}
+boxplot(tude)
+```
+
+## Is there a difference between complaints and privileges
+
+
+```{r}
+t.test(tude$privileges,tude$learning)
+```
+##Using bootstrp
+
+```{r }
+source("bootstrp.R")
+result <- bootstrp(tude$privileges,tude$learning,1000)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+#Which of the 7 different attitudes are similiar with respect to their means??
